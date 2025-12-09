@@ -6,16 +6,168 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0d1b2a 100%);
     min-height: 100vh;
-    color: #1a1a2e;
+    color: #f0f0f5;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 動態背景容器 */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* 漸層覆蓋層 - 煉金術氛圍 */
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 60%);
+    animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* 漂浮幾何形狀 - 數位遊牧風格 */
+.floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    animation: floatShape 20s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    top: -10%;
+    left: -5%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    top: 60%;
+    right: -5%;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    bottom: 10%;
+    left: 20%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+.shape-4 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    top: 30%;
+    right: 20%;
+    animation-delay: -7s;
+    animation-duration: 18s;
+}
+
+.shape-5 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -3s;
+    animation-duration: 30s;
+}
+
+@keyframes floatShape {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) rotate(5deg) scale(1.05);
+    }
+    50% {
+        transform: translate(-20px, 20px) rotate(-3deg) scale(0.95);
+    }
+    75% {
+        transform: translate(15px, 15px) rotate(3deg) scale(1.02);
+    }
+}
+
+/* 粒子效果 - 煉金術魔法 */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(135deg, #ffd700, #fff);
+    border-radius: 50%;
+    bottom: -10px;
+    opacity: 0;
+    animation: riseParticle 20s linear infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes riseParticle {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    10% {
+        opacity: 0.8;
+        transform: translateY(-10vh) scale(1);
+    }
+    90% {
+        opacity: 0.6;
+        transform: translateY(-90vh) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0);
+    }
 }
 
 .container {
     max-width: 680px;
     margin: 0 auto;
     padding: 60px 24px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Hero Section */
@@ -36,7 +188,7 @@ body {
 
 .tagline {
     font-size: 1.1rem;
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 400;
 }
 
@@ -52,18 +204,23 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
-    background: white;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 16px 24px;
     border-radius: 12px;
     text-decoration: none;
-    color: #1a1a2e;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: all 0.2s ease;
+    color: #f0f0f5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .link-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
 }
 
 .link-icon {
@@ -84,7 +241,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 24px;
-    color: #1a1a2e;
+    color: #f0f0f5;
 }
 
 .project-grid {
@@ -97,24 +254,29 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    background: white;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 20px 24px;
     border-radius: 16px;
     text-decoration: none;
-    color: #1a1a2e;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: all 0.2s ease;
+    color: #f0f0f5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
 }
 
 .project-preview {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -138,30 +300,30 @@ body {
 
 .project-info p {
     font-size: 0.9rem;
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .project-arrow {
     font-size: 1.2rem;
-    color: #9ca3af;
-    transition: transform 0.2s ease;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
 }
 
 .project-card:hover .project-arrow {
     transform: translateX(4px);
-    color: #667eea;
+    color: #a855f7;
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding-top: 24px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 footer p {
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* Responsive */
